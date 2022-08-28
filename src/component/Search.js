@@ -6,10 +6,6 @@ import MainModal from './MainModal';
 
 const Search = () => {
 
-    function capitalizeFirstLetter(string) {
-        return string.charAt(0).toUpperCase() + string.slice(1);
-    }
-
     const [searchText, setSearchText] = useState("");
     const [content, setContent] = useState();
     const [pages, setPages] = useState();
@@ -27,11 +23,9 @@ const Search = () => {
             let currentPage = 1;
             while (currentPage <= pages && currentPage < 5) {
                 const { data } = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&query=${searchText}&page=${currentPage}&include_adult=false`)
-                const searchWord = capitalizeFirstLetter(searchText);
                 const movies = data.results.filter(movie => {
                     return (movie.original_title.substring(0, searchText.length).toUpperCase() === searchText.toUpperCase());
                 })
-                console.log(movies);
                 filteredMovies = filteredMovies.concat(movies);
                 currentPage++;
             }
