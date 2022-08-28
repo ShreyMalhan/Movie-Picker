@@ -1,0 +1,17 @@
+.container{
+    margin-top: 2%;
+    position: relative;
+    text-align: center;
+}
+
+.logo{
+    width: 10em;
+    position: absolute;
+    left:0;
+    padding-left: 2rem;
+    padding-top: 2rem;
+}
+
+.header{
+    font-size: x-large;
+}

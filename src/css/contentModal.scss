@@ -1,0 +1,102 @@
+@import url(https://fonts.googleapis.com/css2?family=Anek+Telugu:wght@300&display=swap);
+
+@mixin faded($offset, $blur-radius, $spread-radius) {
+    &.faded-bottom:after {
+        box-shadow: inset 0 (-$offset) $blur-radius (
+            $spread-radius
+        );
+}
+}
+
+$faded-offset: 55px !default;
+$faded-blur-radius: 50px !default;
+$faded-spread-radius: 5px !default;
+
+.faded {
+    position: relative;
+    // display: inline-block;
+    color: black;
+
+    &:after {
+        content: "";
+        position: absolute;
+        display: block;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-collapse: separate;
+    }
+
+    @include faded($faded-offset, $faded-blur-radius, $faded-spread-radius);
+}
+
+.contentModalContainer {
+    text-align: center;
+}
+
+.poster {
+    width: 100%;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+.title {
+    position: relative;
+    margin-top: -4%;
+    font-size: 40px;
+}
+
+.tagline{
+    font-family: 'Anek Telugu', sans-serif;
+    margin-top: -2.5%;
+    padding: 0 50px;
+}
+
+.overview{
+    font-family: 'Anek Telugu', sans-serif;
+    font-weight: lighter;
+    line-height: 25px;
+    text-align: justify;
+    padding: 10px 50px;
+}
+
+:root {
+    --color-red: #ec1840;
+    --color-purple: #7a18ec;
+    --color-white: #fff;
+    --color-black-1: #111;
+    --color-black-2: #222;
+    --color-black-3: #444;
+    --speed-normal: 0.5s;
+    --speed-fast: 0.8s;
+}
+
+.playButton {
+    padding: 15px 20px;
+    line-height: 60px;
+    letter-spacing: 2px;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: var(--color-white);
+    border: 1px solid var(--color-red);
+    border-radius: 5px;
+
+    &:hover {
+        border: 1px solid transparent;
+        background: var(--color-red) url(https://i.postimg.cc/wBXGXbWN/pixel.png); // 360px x 1080px
+        transition-delay: 0.8s;
+        background-size: 180px;
+        animation: animate var(--speed-fast) steps(8) forwards;
+    }
+}
+
+@keyframes animate {
+    0% {
+        background-position-y: 0;
+    }
+
+    100% {
+        background-position-y: -480px;
+    }
+}
